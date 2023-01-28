@@ -1,2 +1,4 @@
-# Algorithms-and-Data-Structures-Java
-Repo for my algorithms and data structure learning. Language used - Java
+# Algorithms and Data Structures 👾🗃️
+
+- Repository for my algorithms and data structure learning/notes
+- Language used: Java
