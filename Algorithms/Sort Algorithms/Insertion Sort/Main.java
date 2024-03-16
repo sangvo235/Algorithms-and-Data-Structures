@@ -1,30 +1,39 @@
 public class Main {
 
-    public static void main(String[] args) {
+    private static void insertionSort(int[] arr) {
 
-        int array[] = { 8, 7, 9, 2, 3, 1, 5, 4, 6 };
+        for (int i = 1; i < arr.length; i++) {
 
-        insertionSort(array);
+            int temp = arr[i];
+            int j = i - 1;
 
-        for (int i : array) {
-            System.out.println(i);
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+
         }
 
     }
 
-    private static void insertionSort(int[] array) {
+    public static void main(String[] args) {
 
-        for (int i = 1; i < array.length; i++) {
+        int arr[] = {5, 6, 2, 3, 9, 1, 8, 4, 7};
 
-            int temp = array[i];
-            int j = i - 1;
+        System.out.println("Unsorted array: ");
 
-            while (j >= 0 && array[j] > temp) {
-                array[j + 1] = array[j];
-                j--;
-            }
-            array[j + 1] = temp;
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
 
+        insertionSort(arr);
+
+        System.out.println("Sorted array: ");
+
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
 
     }
