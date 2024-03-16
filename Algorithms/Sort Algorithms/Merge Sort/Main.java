@@ -1,72 +1,80 @@
 public class Main {
 
-    public static void main(String args[]) {
+    private static void mergeSort(int[] arr, int l, int r) {
 
-        int[] array = { 8, 2, 5, 3, 4, 7, 6, 1 };
+        if (l < r) {
+            int mid = (l + r)/2;
+            mergeSort(arr, l, mid);
+            mergeSort(arr, mid + 1, r);
 
-        mergeSort(array);
-
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+            merge(arr, l, mid, r);
         }
-
     }
 
-    private static void mergeSort(int[] array) {
+    private static void merge(int[] arr, int l, int mid, int r) {
 
-        int length = array.length;
-        if (length <= 1)
-            return; // base case
+        int n1 = mid - l + 1;
+        int n2 = r - mid;
 
-        int middle = length / 2;
-        int[] leftArray = new int[middle];
-        int[] rightArray = new int[length - middle];
+        int lArr[] = new int[n1];
+        int rArr[] = new int[n2];
 
-        int i = 0; // left array
-        int j = 0; // right array
+        for (int x=0;x<n1;x++) {
+            lArr[x] = arr[l + x];
+        }
 
-        for (; i < length; i++) {
-            if (i < middle) {
-                leftArray[i] = array[i];
+        for (int x=0;x<n2;x++) {
+            rArr[x] = arr[mid + 1 + x];
+        }
+
+        int i=0; 
+        int j=0;
+        int k=l;
+
+        while (i < n1 && j < n2) {
+            if (lArr[i] <= rArr[j]) {
+                arr[k] = lArr[i];
+                i++;
             } else {
-                rightArray[j] = array[i];
+                arr[k] = rArr[j];
                 j++;
             }
+            k++;
         }
-        mergeSort(leftArray);
-        mergeSort(rightArray);
-        merge(leftArray, rightArray, array);
+
+        while(i<n1) {
+            arr[k] = lArr[i];
+            i++;
+            k++;
+        }
+
+        while(j<n2) {
+            arr[k] = rArr[j];
+            j++;
+            k++;
+        }
+
     }
 
-    private static void merge(int[] leftArray, int[] rightArray, int[] array) {
+    public static void main(String args[]) {
 
-        int leftSize = array.length / 2;
-        int rightSize = array.length - leftSize;
-        int i = 0, l = 0, r = 0; // indices
+        int arr[] = {5, 6, 2, 3, 9, 1, 8, 4, 7};
 
-        // check the conditions for merging
-        while (l < leftSize && r < rightSize) {
-            if (leftArray[l] < rightArray[r]) {
-                array[i] = leftArray[l];
-                i++;
-                l++;
-            } else {
-                array[i] = rightArray[r];
-                i++;
-                r++;
-            }
+        System.out.println("Unsorted array: ");
+
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        mergeSort(arr, 0, arr.length - 1);
+
+        System.out.println("Sorted array: ");
+
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
 
-        while (l < leftSize) {
-            array[i] = leftArray[l];
-            i++;
-            l++;
-        }
-
-        while (l < rightSize) {
-            array[i] = rightArray[r];
-            i++;
-            r++;
-        }
     }
+
 }

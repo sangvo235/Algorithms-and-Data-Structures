@@ -1,7 +1,6 @@
 public class Main {
 
-    private static void quickSort(int[] arr, int low, int high) 
-    {
+    private static void quickSort(int[] arr, int low, int high) {
         if (low < high) 
         {
             int pi = partition(arr, low, high);
@@ -11,8 +10,7 @@ public class Main {
         }
     }
 
-    private static int partition(int[] arr, int low, int high) 
-    {
+    private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
 
@@ -35,13 +33,21 @@ public class Main {
         return i+1;
     }
 
-    public static void main(String args[]) 
-    {
-        int arr[] = {5,6,2,3,9,1,8,4,7};
+    public static void main(String args[]) {
+        int arr[] = {5, 6, 2, 3, 9, 1, 8, 4, 7};
+
+        System.out.println("Unsorted array: ");
+
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
 
         quickSort(arr, 0, arr.length - 1);
 
-        for(int num : arr) {
+        System.out.println("Sorted array: ");
+
+        for (int num : arr) {
             System.out.print(num + " ");
         }
     }
