@@ -1,47 +1,49 @@
 public class Main {
 
-    public static void main(String args[]) {
+    private static void quickSort(int[] arr, int low, int high) 
+    {
+        if (low < high) 
+        {
+            int pi = partition(arr, low, high);
 
-        int[] array = { 8, 2, 5, 3, 9, 7, 6, 1, 4 };
-
-        quickSort(array, 0, array.length - 1);
-
-        for (int i : array) {
-            System.out.println(i);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
         }
-
     }
 
-    private static void quickSort(int[] array, int start, int end) {
+    private static int partition(int[] arr, int low, int high) 
+    {
+        int pivot = arr[high];
+        int i = low - 1;
 
-        if (end <= start)
-            return; // base case
-
-        int pivot = partition(array, start, end);
-
-        quickSort(array, start, pivot - 1);
-        quickSort(array, pivot + 1, end);
-    }
-
-    private static int partition(int[] array, int start, int end) {
-
-        int pivot = array[end];
-        int i = start - 1;
-
-        for (int j = start; j <= end - 1; j++) {
-            if (array[j] < pivot) {
+        for (int j = low; j < high; j++) 
+        {
+            if (arr[j] < pivot) 
+            {
                 i++;
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                // swap(arr[i], arr[j]);
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
-        i++;
-        int temp = array[i];
-        array[i] = array[end];
-        array[end] = temp;
+        // swap(arr[i+1], arr[high]);
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
 
-        return i;
-
+        return i+1;
     }
+
+    public static void main(String args[]) 
+    {
+        int arr[] = {5,6,2,3,9,1,8,4,7};
+
+        quickSort(arr, 0, arr.length - 1);
+
+        for(int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+
 }
