@@ -1,33 +1,42 @@
 public class Main {
 
-    public static void main(String[] args) {
+    private static void selectionSort(int[] arr) {
 
-        int array[] = { 8, 7, 9, 2, 3, 1, 5, 4, 6 };
-
-        selectionSort(array);
-
-        for (int i : array) {
-            System.out.println(i);
-        }
-
-    }
-
-    private static void selectionSort(int[] array) {
-
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
 
             int min = i;
 
-            for (int j = i + 1; j < array.length; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
 
-                if (array[min] > array[j]) {
+                if (arr[min] > arr[j]) {
                     min = j;
                 }
             }
 
-            int temp = array[i];
-            array[i] = array[min];
-            array[min] = temp;
+            int temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+
+    }
+
+    public static void main(String[] args) {
+
+        int arr[] = {5, 6, 2, 3, 9, 1, 8, 4, 7};
+
+        System.out.println("Unsorted array: ");
+
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        selectionSort(arr);
+
+        System.out.println("Sorted array: ");
+
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
 
     }
