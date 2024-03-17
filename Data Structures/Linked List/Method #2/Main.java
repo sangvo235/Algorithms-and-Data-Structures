@@ -9,6 +9,7 @@ public class Main {
         list.insertAtStart(25);
         list.insertAt(2, 55);
         list.insertAt(0, 32);
+        list.deleteAt(2);
         list.show();
 
     }
