@@ -1,5 +1,3 @@
-package Queue;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -19,7 +17,7 @@ public class Main {
 
         // System.out.println(queue.peek());
 
-        // poll won't cause an expection
+        // Poll won't cause an exception if the queue is empty
         // queue.poll();
         // queue.poll();
         // queue.poll();
