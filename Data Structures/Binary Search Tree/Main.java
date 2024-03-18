@@ -11,8 +11,8 @@ public class Main {
         tree.insert(new Node(7));
         tree.insert(new Node(3));
         tree.insert(new Node(6));
-        tree.insert(new Node(4));
         tree.insert(new Node(8));
+        tree.insert(new Node(4));
 
         // tree.display();
 
