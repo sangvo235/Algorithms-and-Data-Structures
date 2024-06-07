@@ -1,6 +1,6 @@
-# Data Structures and Algorithms 👾🗃️
+# Algorithm and Data Structure Code 👾🗃️
 
-- Purpose: Repository for my data structure and algorithms notes.
+- Purpose: Repository for my algorithm and data structure code examples.
 - Language: Java.
 
 - Data Structure: a named location that can be used to store and organize data.
