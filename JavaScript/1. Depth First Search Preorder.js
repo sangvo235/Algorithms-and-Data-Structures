@@ -36,20 +36,17 @@ class BST {
         }
     }
 
-    BFS() {
-        let currentNode = this.root;
-        let queue = [];
-        let results = [];
-        queue.push(currentNode);
-
-        while (queue.length) {
-            currentNode = queue.shift();
-            results.push(currentNode.value);
-            if (currentNode.left) queue.push(currentNode.left);
-            if (currentNode.right) queue.push(currentNode.right);
+    DFSPreOrder() {
+        let results = []
+        
+        function traverse(currentNode) {
+            results.push(currentNode.value)
+            if (currentNode.left) traverse(currentNode.left)
+            if (currentNode.right) traverse(currentNode.right)
         }
-
-        return results;
+    
+        traverse(this.root)
+        return results
     }
 }
 
@@ -62,4 +59,4 @@ myTree.insert(27);
 myTree.insert(52);
 myTree.insert(82);
 
-console.log(myTree.BFS()); // Output: [47, 21, 76, 18, 27, 52, 82]
+console.log(myTree.DFSPreOrder()); // Output: [47, 21, 18, 27, 76, 52, 82]
